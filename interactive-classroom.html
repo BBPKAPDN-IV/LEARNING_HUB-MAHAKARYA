@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kategori Ice Breaking - Learning Hub</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f6f7f9; }
+    
+    /* Efek transisi untuk kartu kategori */
+    .category-card { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .category-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .category-card:hover .icon-wrapper { transform: scale(1.1); }
+    .icon-wrapper { transition: transform 0.4s ease; }
+    
+    /* Latar belakang dekoratif */
+    .bg-grid {
+      background-image: radial-gradient(rgba(13,148,136, 0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+  </style>
+</head>
+<body class="h-full bg-grid relative overflow-x-hidden">
+  
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-teal-500 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none"></div>
+
+  <nav class="w-full bg-white/85 backdrop-blur-md border-b border-gray-200 px-6 py-4 fixed top-0 left-0 z-50 shadow-sm">
+    <div class="max-w-5xl mx-auto flex items-center gap-4">
+      <a href="index.html" class="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-600" aria-label="Kembali ke Beranda">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+      </a>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full" style="background:#0d9488;"></span>
+        <span class="text-lg font-bold text-gray-800" style="font-family:'Playfair Display',serif;">Modul 01: Interactive Classroom</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-6 pt-32 pb-16 relative z-10 flex flex-col items-center justify-center min-h-screen">
+    
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 bg-white border border-gray-200 shadow-sm">
+        <i data-lucide="sparkles" class="w-4 h-4 text-teal-600"></i> 
+        <span class="text-sm font-bold text-gray-700">Bank Referensi Ice Breaking</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 text-gray-900 leading-tight" style="font-family:'Playfair Display',serif;">Pilih Metode <span style="color:#0d9488;">Pembelajaran</span></h1>
+      <p class="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
+        Tersedia lebih dari 50+ teknik ice breaking. Silakan pilih kategori di bawah ini menyesuaikan dengan kondisi kelas yang sedang Anda ampu.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+      
+      <a href="icebreaking-offline.html" class="category-card block bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-48 h-48 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(13,148,136,.05),transparent 70%); transform:translate(30%,-30%); pointer-events:none;"></div>
+        
+        <div class="icon-wrapper w-20 h-20 rounded-3xl flex items-center justify-center mb-6 bg-teal-50 border border-teal-100 shadow-inner">
+          <i data-lucide="users" class="w-10 h-10 text-teal-600"></i>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-700 transition-colors">Klasikal / Tatap Muka</h2>
+        <p class="text-gray-500 leading-relaxed mb-8">
+          Kumpulan teknik pemecah kebekuan untuk kelas fisik (offline). Membutuhkan interaksi langsung, pergerakan tubuh, dan dinamika kelompok di dalam ruangan.
+        </p>
+        
+        <div class="flex items-center justify-between border-t border-gray-100 pt-5">
+          <span class="text-sm font-bold text-gray-400">30+ Teknik Tersedia</span>
+          <div class="w-10 h-10 rounded-full bg-teal-600 text-white flex items-center justify-center group-hover:bg-teal-700 transition-colors shadow-md">
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </div>
+        </div>
+      </a>
+
+      <a href="icebreaking-online.html" class="category-card block bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-48 h-48 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(249,112,102,.05),transparent 70%); transform:translate(30%,-30%); pointer-events:none;"></div>
+        
+        <div class="icon-wrapper w-20 h-20 rounded-3xl flex items-center justify-center mb-6 border shadow-inner" style="background: rgba(249,112,102,0.05); border-color: rgba(249,112,102,0.1);">
+          <i data-lucide="monitor-play" class="w-10 h-10" style="color:#F97066;"></i>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-gray-900 mb-3 transition-colors" style="color:#1a2332;">Virtual / Online</h2>
+        <p class="text-gray-500 leading-relaxed mb-8">
+          Kumpulan teknik yang dirancang khusus untuk <i>Distance Learning</i> melalui platform Zoom atau Google Meet. Memanfaatkan fitur <i>chat</i>, kamera, dan <i>share screen</i>.
+        </p>
+        
+        <div class="flex items-center justify-between border-t border-gray-100 pt-5">
+          <span class="text-sm font-bold text-gray-400">20+ Teknik Tersedia</span>
+          <div class="w-10 h-10 rounded-full text-white flex items-center justify-center transition-colors shadow-md hover:opacity-90" style="background:#F97066;">
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

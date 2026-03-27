@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub MAHAKARYA</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; }
+
+    /* --- ANIMASI BARU: TEMA ICE BREAKING & INTERAKSI --- */
+    @keyframes floatCenter { 0%,100%{ transform: translate(-50%, -50%); } 50%{ transform: translate(-50%, -55%); } }
+    @keyframes floatInteraction { 0%,100%{ transform: translateY(0) rotate(-4deg); } 50%{ transform: translateY(-18px) rotate(0deg); } }
+    @keyframes floatPuzzle { 0%,100%{ transform: translate(0, 0) rotate(10deg); } 50%{ transform: translate(-10px, -15px) rotate(5deg); } }
+    @keyframes floatDice { 0%,100%{ transform: translateY(0) rotate(0deg); } 50%{ transform: translateY(-20px) rotate(180deg); } }
+    
+    @keyframes pulseGlow { 0%,100%{ opacity: 0.3; transform: scale(1) translate(-50%, -50%); } 50%{ opacity: 0.6; transform: scale(1.1) translate(-50%, -50%); } }
+    @keyframes spinSlow { 100% { transform: rotate(360deg); } }
+    @keyframes floatParticle { 0%, 100% { opacity: 0.3; transform: translateY(0); } 50% { opacity: 0.7; transform: translateY(-10px); } }
+
+    /* Animasi Dasar */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes heroTextReveal { from { opacity:0; transform:translateY(40px) scale(.96); } to { opacity:1; transform:translateY(0) scale(1); } }
+
+    /* Kelas Utilitas */
+    .card-hover { transition: all .4s cubic-bezier(.25,.46,.45,.94); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .card-hover:hover .card-icon-wrap { transform: scale(1.1) rotate(-3deg); }
+    .card-icon-wrap { transition: transform .4s cubic-bezier(.25,.46,.45,.94); }
+    
+    .hero-anim { animation: heroTextReveal .9s ease-out forwards; }
+    .hero-anim-delay { animation: heroTextReveal .9s ease-out .2s forwards; opacity: 0; }
+    .hero-anim-delay2 { animation: heroTextReveal .9s ease-out .4s forwards; opacity: 0; }
+
+    .card-appear { opacity: 0; animation: fadeUp .6s ease-out forwards; }
+    .card-appear:nth-child(1) { animation-delay: .3s; }
+    .card-appear:nth-child(2) { animation-delay: .45s; }
+    .card-appear:nth-child(3) { animation-delay: .6s; }
+    .card-appear:nth-child(4) { animation-delay: .75s; }
+
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#0d9488; transition:width .3s; }
+    .nav-link:hover::after { width:100%; }
+
+    .btn-hover { transition: all 0.3s ease; }
+    .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(13,148,136,0.25); opacity: 0.95; }
+
+    /* Glassmorphism Styles */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+    }
+
+    /* Grid Background Pattern */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(13,148,136, 0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .scroll-wrapper { height: 100%; overflow-y: auto; overflow-x: hidden; }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="scroll-wrapper w-full" id="app-root" style="background:#f6f7f9;">
+    
+   <nav id="nav-bar" style="background:rgba(246,247,249,.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,.06);" class="fixed top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div id="nav-logo-bg" style="background:#0d9488;" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-inner">
+        <i data-lucide="graduation-cap" style="color:#fff;" class="w-5 h-5"></i>
+      </div>
+      <span id="nav-title" class="text-xl font-bold" style="color:#1a2332; font-family:'Playfair Display',serif;">MAHAKARYA</span>
+     </div>
+     <div class="hidden md:flex items-center gap-8">
+       <a href="#hero" class="nav-link text-sm font-medium" style="color:#475569;">Beranda</a> 
+       <a href="#features" class="nav-link text-sm font-medium" style="color:#475569;">Fitur</a> 
+       <a href="#about" class="nav-link text-sm font-medium" style="color:#475569;">Tentang</a>
+     </div>
+    </div>
+   </nav>
+
+   <header id="hero" class="relative w-full overflow-hidden bg-grid-pattern" style="padding-top:80px;">
+    <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-[100px] opacity-10"></div>
+    <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-72 h-72 bg-coral-500 rounded-full mix-blend-multiply filter blur-[100px] opacity-10" style="background-color: #F97066;"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24 flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
+     
+     <div class="flex-1 z-10 text-center lg:text-left relative">
+      <div class="hero-anim inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 shadow-sm border border-teal-100/50 bg-white/80 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full" style="background:#0d9488; box-shadow: 0 0 8px #0d9488;"></span> 
+        <span class="text-sm font-bold tracking-wide" style="color:#0d9488;">Platform Learning Hub MAHAKARYA</span>
+      </div>
+      
+      <h1 id="hero-title" class="hero-anim text-4xl md:text-5xl lg:text-6xl font-800 leading-tight" style="font-family:'Playfair Display',serif; color:#1a2332;">
+        Elevate Your<br>
+        <span style="color:#0d9488;">Teaching</span> Excellence<br>
+        With <span style="color:#0d9488;">MAHAKARYA</span>
+      </h1>      
+      
+      <p id="hero-subtitle" class="hero-anim-delay text-lg md:text-xl mt-6 leading-relaxed max-w-xl mx-auto lg:mx-0" style="color:#64748b;">
+        MEDIA HUB AKSELERASI PEMBELAJARAN WIDYAISWARA sebagai pusat referensi digital untuk mengembangkan kompetensi, memanfaatkan teknologi AI, dan meningkatkan kualitas pembelajaran.
+      </p>
+
+      <div class="hero-anim-delay2 flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
+        <a href="#features" id="hero-cta" style="background:#0d9488; color:#fff;" class="px-8 py-4 rounded-2xl font-semibold text-base flex items-center gap-2.5 justify-center shadow-lg shadow-teal-500/30 btn-hover"> 
+          Jelajahi Fitur <i data-lucide="arrow-right" class="w-4 h-4"></i> 
+        </a>
+      </div>
+     </div>
+     
+     <div class="flex-1 flex items-center justify-center relative w-full" style="min-height:500px; perspective: 1200px;">
+      
+      <div class="absolute top-1/2 left-1/2 w-[350px] h-[350px] rounded-full translate-x-1/2 translate-y-1/2" style="background: radial-gradient(circle, rgba(13,148,136,0.25) 0%, rgba(249,112,102,0.1) 50%, transparent 70%); animation: pulseGlow 6s ease-in-out infinite; transform-origin: top left;"></div>
+      
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] border border-teal-200/50 rounded-full border-dashed" style="animation: spinSlow 40s linear infinite;"></div>
+
+      <div class="glass-card absolute top-[10%] left-[5%] md:-left-[5%] w-48 p-5 rounded-3xl z-10 space-y-3" style="animation: floatInteraction 6s ease-in-out infinite;">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center border border-teal-100/50">
+            <i data-lucide="messages-square" class="w-5 h-5 text-teal-600"></i>
+          </div>
+          <div class="text-xs font-bold text-gray-800">Komunikasi</div>
+        </div>
+        <div class="flex items-center gap-2">
+            <img src="https://api.dicebear.com/8.x/notionists/svg?seed=Felix" alt="Avatar" class="w-7 h-7 rounded-full bg-gray-100 border border-white">
+            <img src="https://api.dicebear.com/8.x/notionists/svg?seed=Aneka" alt="Avatar" class="w-7 h-7 rounded-full bg-gray-100 border border-white -ml-4">
+            <div class="w-7 h-7 rounded-full bg-teal-500 flex items-center justify-center text-white text-[10px] font-bold border border-white -ml-4 shadow-inner">+3</div>
+        </div>
+        <div class="text-[10px] text-teal-700 font-medium bg-teal-50 px-2 py-1 rounded-full w-max">Saling Mengenal</div>
+      </div>
+
+      <div class="absolute top-[10%] right-[10%] z-0" style="animation: floatDice 8s linear infinite;">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <rect x="5" y="5" width="50" height="50" rx="10" fill="url(#diceGrad)" stroke="#e2e8f0" stroke-width="2"/>
+            <circle cx="18" cy="18" r="4" fill="#1a2332"/>
+            <circle cx="30" cy="30" r="4" fill="#1a2332"/>
+            <circle cx="42" cy="42" r="4" fill="#1a2332"/>
+            <circle cx="42" cy="18" r="4" fill="#1a2332"/>
+            <circle cx="18" cy="42" r="4" fill="#1a2332"/>
+            <defs>
+                <linearGradient id="diceGrad" x1="0" y1="0" x2="60" y2="60">
+                    <stop offset="0%" stop-color="#fff"/>
+                    <stop offset="100%" stop-color="#f8fafc"/>
+                </linearGradient>
+            </defs>
+        </svg>
+      </div>
+
+      <div class="absolute bottom-[10%] right-[5%] z-0" style="animation: floatPuzzle 6s ease-in-out 1s infinite; transform: rotate(10deg);">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <path d="M10 40H25C28.3 40 31 37.3 31 34V20C31 16.7 33.7 14 37 14H51C54.3 14 57 16.7 57 20V26C57 29.3 59.7 32 63 32H75C78.3 32 81 34.7 81 38V52C81 55.3 83.7 58 87 58H93V72C93 75.3 90.3 78 87 78H73C69.7 78 67 75.3 67 72V66C67 62.7 64.3 60 61 60H47C43.7 60 41 62.7 41 66V78H10V40Z" fill="#F97066" opacity="0.9"/>
+            <path d="M40 5H54C57.3 5 60 7.7 60 11V17C60 20.3 62.7 23 66 23H78C81.3 23 84 25.7 84 29V43C84 46.3 86.7 49 90 49H96V63C96 66.3 93.3 69 90 69H76C72.7 69 70 66.3 70 63V57C70 53.7 67.3 51 64 51H50C46.7 51 44 53.7 44 57V69H40V5Z" fill="#0d9488" opacity="0.3" stroke="#0d9488" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <div class="glass-card absolute top-1/2 left-1/2 w-72 p-6 rounded-[2rem] z-20 shadow-[0_30px_60px_rgba(13,148,136,0.15)] space-y-4" style="animation: floatCenter 7s ease-in-out infinite; border: 1.5px solid rgba(255,255,255,0.9);">
+        <div class="flex items-center justify-between">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 text-teal-700 border border-teal-100">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wide">Interactive</span>
+            </div>
+            <div class="text-2xl">🎉</div>
+        </div>
+        
+        <h3 class="text-xl font-800 text-gray-950 leading-tight mb-2">Ayo Cairkan<br>Suasana Kelas!</h3>
+        
+        <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-inner">
+            <div class="text-3xl">😄</div>
+            <div class="space-y-1">
+                <div class="text-xs font-bold text-gray-900">10+ Teknik Ice Breaking</div>
+                <div class="text-[10px] text-gray-500 leading-relaxed">Ciptakan suasana belajar yang dinamis, interaktif, dan menyenangkan.</div>
+            </div>
+        </div>
+      </div>
+
+      <div class="absolute top-[20%] left-[30%] text-teal-400 text-lg" style="animation: floatParticle 3s ease-in-out infinite;">?</div>
+      <div class="absolute bottom-[30%] left-[40%] text-coral-400 text-xl font-bold" style="animation: floatParticle 4s ease-in-out 1s infinite;">!</div>
+      <div class="absolute top-[40%] right-[20%] text-gray-300 text-sm" style="animation: floatParticle 3.5s ease-in-out 0.5s infinite;">•</div>
+
+     </div> 
+    </div>
+
+    <svg class="w-full" viewBox="0 0 1440 80" preserveAspectRatio="none" style="display:block; margin-top:-1px;">
+      <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="#fff" />
+    </svg>
+   </header>
+
+   <section id="features" class="w-full relative z-10" style="background:#fff;">
+    <div class="max-w-7xl mx-auto px-6 pt-8 pb-16 md:pt-10 md:pb-24">
+     <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 bg-teal-50 text-teal-700 border border-teal-100">
+        <i data-lucide="layout-grid" class="w-4 h-4"></i> 
+        <span class="text-sm font-bold">Fitur Utama</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold" style="font-family:'Playfair Display',serif; color:#1a2332;">Empat Pilar <span style="color:#0d9488;">Learning Hub MAHAKARYA</span></h2>
+      <p class="mt-4 text-base max-w-2xl mx-auto" style="color:#64748b;">Akses cepat ke seluruh sumber daya pengembangan kompetensi dalam satu platform digital.</p>
+     </div>
+     
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      
+    <a href="interactive-classroom.html" class="card-appear card-hover rounded-3xl p-8 relative overflow-hidden group cursor-pointer block border border-gray-100 shadow-sm bg-white" style="text-decoration:none;">
+       <div class="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(13,148,136,.06),transparent 70%); transform:translate(30%,-30%);"></div>
+       <div class="card-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-teal-50 border border-teal-100">
+         <i data-lucide="users" class="w-6 h-6 text-teal-600"></i>
+       </div>
+       <div class="flex items-center gap-2 mb-2">
+         <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span> 
+         <span class="text-xs font-bold uppercase tracking-wider text-teal-600">Modul 01</span>
+       </div>
+       <h3 id="card1-title" class="text-xl font-bold mb-3 transition-colors group-hover:text-teal-700 text-gray-950">Interactive Classroom</h3>
+       <p class="text-sm leading-relaxed text-gray-500">Berisi bank referensi teknik ice breaking untuk menciptakan suasana belajar yang dinamis, interaktif, dan menyenangkan bagi peserta pelatihan.</p>
+       <div class="mt-6 flex items-center gap-2 text-sm font-bold text-teal-600 transition-transform group-hover:translate-x-1">
+        Buka Modul <i data-lucide="arrow-right" class="w-4 h-4"></i>
+       </div>
+      </a>
+
+      <a href="ai-tools.html" class="card-appear card-hover rounded-3xl p-8 relative overflow-hidden group cursor-pointer block border border-gray-100 shadow-sm bg-white" style="text-decoration:none;">
+       <div class="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(249,112,102,.06),transparent 70%); transform:translate(30%,-30%);"></div>
+       <div class="card-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mb-5 border" style="background: rgba(249,112,102,0.05); border-color: rgba(249,112,102,0.1);">
+         <i data-lucide="bot" class="w-6 h-6" style="color:#F97066;"></i>
+       </div>
+       <div class="flex items-center gap-2 mb-2">
+         <span class="w-1.5 h-1.5 rounded-full" style="background:#F97066;"></span> 
+         <span class="text-xs font-bold uppercase tracking-wider" style="color:#F97066;">Modul 02</span>
+       </div>
+       <h3 id="card2-title" class="text-xl font-bold mb-3 transition-colors text-gray-950" style="color:#1a2332;">AI-Driven Teaching Tools</h3>
+       <p class="text-sm leading-relaxed text-gray-500">Menyediakan panduan praktis pemanfaatan AI seperti NotebookLM untuk penyusunan rencana pembelajaran atau Gamma AI untuk menyusun bahan tayang secara instan.</p>
+       <div class="mt-6 flex items-center gap-2 text-sm font-bold transition-transform group-hover:translate-x-1" style="color:#F97066;">
+        Buka Modul <i data-lucide="arrow-right" class="w-4 h-4"></i>
+       </div>
+      </a>
+
+      <a href="professional-insight.html" class="card-appear card-hover rounded-3xl p-8 relative overflow-hidden group cursor-pointer block border border-gray-100 shadow-sm bg-white" style="text-decoration:none;"><div class="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(13,148,136,.06),transparent 70%); transform:translate(30%,-30%);"></div>
+       <div class="card-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-teal-50 border border-teal-100">
+         <i data-lucide="bar-chart-3" class="w-6 h-6 text-teal-600"></i>
+       </div>
+       <div class="flex items-center gap-2 mb-2">
+         <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span> 
+         <span class="text-xs font-bold uppercase tracking-wider text-teal-600">Modul 03</span>
+       </div>
+       <h3 id="card3-title" class="text-xl font-bold mb-3 transition-colors group-hover:text-teal-700 text-gray-950">Professional Insight Dashboard</h3>
+       <p class="text-sm leading-relaxed text-gray-500">Menyediakan akses cepat publikasi ilmiah, sumber informasi terupdate mengenai dunia pemerintahan dan kewidyaiswaraan untuk mendukung profesionalisme Anda.</p>
+       <div class="mt-6 flex items-center gap-2 text-sm font-bold text-teal-600 transition-transform group-hover:translate-x-1">
+        Selengkapnya <i data-lucide="arrow-right" class="w-4 h-4"></i>
+       </div>
+      </a>
+
+      <a href="career-roadmap.html" class="card-appear card-hover rounded-3xl p-8 relative overflow-hidden group cursor-pointer border border-gray-100 shadow-sm bg-white">
+       <div class="absolute top-0 right-0 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(249,112,102,.06),transparent 70%); transform:translate(30%,-30%);"></div>
+       <div class="card-icon-wrap w-14 h-14 rounded-2xl flex items-center justify-center mb-5 border" style="background: rgba(249,112,102,0.05); border-color: rgba(249,112,102,0.1);">
+         <i data-lucide="compass" class="w-6 h-6" style="color:#F97066;"></i>
+       </div>
+       <div class="flex items-center gap-2 mb-2">
+         <span class="w-1.5 h-1.5 rounded-full" style="background:#F97066;"></span> 
+         <span class="text-xs font-bold uppercase tracking-wider" style="color:#F97066;">Modul 04</span>
+       </div>
+       <h3 id="card4-title" class="text-xl font-bold mb-3 transition-colors text-gray-950">Career &amp; Competency Roadmap</h3>
+       <p class="text-sm leading-relaxed text-gray-500">Menyediakan informasi mengenai pelatihan pengembangan kompetensi (diklat teknis/fungsional) yang dapat diikuti oleh widyaiswara untuk jenjang karier.</p>
+       <div class="mt-6 flex items-center gap-2 text-sm font-bold transition-transform group-hover:translate-x-1" style="color:#F97066;">
+        Selengkapnya <i data-lucide="arrow-right" class="w-4 h-4"></i>
+       </div>
+      </a>
+
+     </div>
+    </div>
+   </section>
+
+   <footer class="w-full relative overflow-hidden mt-8" style="background:#1a2332;">
+    <div class="absolute inset-0 opacity-10 pointer-events-none" style="background: radial-gradient(circle at 50% 0%, #0d9488, transparent 70%);"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-6 py-12 md:py-16 z-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center md:items-start text-center md:text-left">
+        
+        <div class="flex flex-col items-center md:items-start gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center p-1.5 shadow-lg relative z-10 btn-hover">
+               <img src="BBPK-APDN-IV.png" alt="Logo Instansi Kemendagri" class="w-full h-full object-contain">
+            </div>
+            <div class="text-left">
+              <span class="block text-lg font-bold tracking-wide" style="color:#e2e8f0; font-family:'Playfair Display',serif;">BBPK-APDN IV</span>
+              <span class="block text-sm font-medium" style="color:#94a3b8;">Makassar</span>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed max-w-xs mt-2" style="color:#64748b;">
+            Portal Layanan Terintegrasi dan Pusat Pengembangan Kompetensi Widyaiswara yang inovatif di Sulawesi Selatan.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center md:items-start gap-3">
+          <h4 class="text-white font-semibold mb-3 tracking-wide">Jelajahi Modul</h4>
+          <a href="interactive-classroom.html" class="text-sm transition-colors hover:text-teal-400" style="color:#94a3b8;">Interactive Classroom</a>
+          <a href="ai-tools.html" class="text-sm transition-colors hover:text-teal-400" style="color:#94a3b8;">AI-Driven Teaching Tools</a>
+          <a href="professional-insight.html" class="text-sm transition-colors hover:text-teal-400" style="color:#94a3b8;">Professional Insight</a>
+          <a href="career-roadmap.html" class="text-sm transition-colors hover:text-teal-400" style="color:#94a3b8;">Career Roadmap</a>
+        </div>
+
+        <div class="flex flex-col items-center md:items-start gap-3">
+          <h4 class="text-white font-semibold mb-3 tracking-wide">Hubungi Kami</h4>
+          <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+            Makassar, Sulawesi Selatan<br>Indonesia
+          </p>
+          
+          <div class="flex flex-col gap-3.5 mt-2.5">
+            <div class="flex items-center gap-3.5 text-sm" style="color:#94a3b8;">
+              <i data-lucide="mail" class="w-4.5 h-4.5 text-teal-500"></i>
+              <span>mediappsdmmks@gmail.com</span>
+            </div>
+            <div class="flex items-center gap-3.5 text-sm" style="color:#94a3b8;">
+              <i data-lucide="globe" class="w-4.5 h-4.5 text-teal-500"></i>
+              <span>www.ppsdmregmakassar.kemendagri.go.id</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 md:mt-16 pt-8 border-t border-gray-800/60 flex flex-col md:flex-row items-center justify-center gap-4">
+        <p class="text-xs" style="color:#64748b;">
+          © 2026 Learning Hub Mahakarya.
+        </p>
+      </div>
+    </div>
+   </footer>
+
+  </div> 
+  <script>
+    lucide.createIcons();
+
+    // JavaScript SDK untuk kustomisasi tema dinamis (Diperbarui agar tidak merusak HTML H1)
+    const defaultConfig = {
+      background_color: '#f6f7f9',
+      surface_color: '#ffffff',
+      text_color: '#1a2332',
+      primary_action: '#0d9488',
+      secondary_action: '#F97066',
+      font_family: 'Plus Jakarta Sans',
+      font_size: 16,
+      hero_title: 'Elevate Your<br><span style="color:#0d9488;">Teaching</span> Excellence<br>With <span style="color:#0d9488;">MAHAKARYA</span>',
+      hero_subtitle: 'MEDIA HUB AKSELERASI PEMBELAJARAN WIDYAISWARA sebagai pusat referensi digital untuk mengembangkan kompetensi, memanfaatkan teknologi AI, dan meningkatkan kualitas pembelajaran.',
+      card1_title: 'Interactive Classroom',
+      card2_title: 'AI-Driven Teaching Tools',
+      card3_title: 'Professional Insight Dashboard',
+      card4_title: 'Career & Competency Roadmap'
+    };
+
+    function applyConfig(c) {
+      const bg = c.background_color || defaultConfig.background_color;
+      const surface = c.surface_color || defaultConfig.surface_color;
+      const text = c.text_color || defaultConfig.text_color;
+      const primary = c.primary_action || defaultConfig.primary_action;
+      const font = c.font_family || defaultConfig.font_family;
+      const size = c.font_size || defaultConfig.font_size;
+
+      const root = document.getElementById('app-root');
+      root.style.background = bg;
+      root.style.fontFamily = `${font}, 'Plus Jakarta Sans', sans-serif`;
+
+      const heroTitle = document.getElementById('hero-title');
+      // Menggunakan innerHTML langsung agar format span dan br tetap terbaca
+      heroTitle.innerHTML = c.hero_title || defaultConfig.hero_title;
+      heroTitle.style.color = text;
+      heroTitle.style.fontFamily = `${font}, 'Playfair Display', serif`;
+
+      document.getElementById('hero-subtitle').textContent = c.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('nav-logo-bg').style.background = primary;
+      document.getElementById('nav-title').style.color = text;
+      document.getElementById('hero-cta').style.background = primary;
+
+      document.getElementById('card1-title').textContent = c.card1_title || defaultConfig.card1_title;
+      document.getElementById('card2-title').textContent = c.card2_title || defaultConfig.card2_title;
+      document.getElementById('card3-title').textContent = c.card3_title || defaultConfig.card3_title;
+      document.getElementById('card4-title').textContent = c.card4_title || defaultConfig.card4_title;
+    }
+
+    applyConfig(defaultConfig); 
+  </script>
+ </body>
+</html>

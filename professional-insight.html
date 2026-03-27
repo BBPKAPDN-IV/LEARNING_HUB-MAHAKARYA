@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publikasi Ilmiah - Learning Hub</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f6f7f9; }
+    
+    .card-hover { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+    .card-hover:hover .icon-wrapper { transform: scale(1.1) rotate(-3deg); }
+    .icon-wrapper { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    
+    .bg-grid {
+      background-image: radial-gradient(rgba(13,148,136, 0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+  </style>
+</head>
+<body class="h-full bg-grid relative overflow-x-hidden">
+  
+  <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-400 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none"></div>
+
+  <nav class="w-full bg-white/85 backdrop-blur-md border-b border-gray-200 fixed top-0 left-0 z-50 shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-4">
+      <a href="index.html" class="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-600" aria-label="Kembali ke Modul 03">
+        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+      </a>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+        <span class="text-lg font-bold text-gray-800" style="font-family:'Playfair Display',serif;">Modul 03: Publikasi & Jurnal Ilmiah</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10">
+    
+    <div class="text-center mb-12 max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 bg-teal-50 text-teal-700 border border-teal-100">
+        <i data-lucide="library" class="w-4 h-4"></i> 
+        <span class="text-sm font-bold tracking-wide">Direktori Jurnal</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 leading-tight" style="font-family:'Playfair Display',serif;">Referensi Karya Tulis <span style="color:#0d9488;">Ilmiah</span></h1>
+      <p class="text-gray-500 text-base">
+        Akses cepat ke repositori digital, jurnal kewidyaiswaraan, dan publikasi terakreditasi untuk referensi penelitian dan pengembangan profesi Anda.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <a href="https://sinta.kemdiktisaintek.go.id/journals/profile/13142" target="_blank" rel="noopener noreferrer" class="card-hover bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden group block">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(59,130,246,.08),transparent 70%); transform:translate(30%,-30%); pointer-events:none;"></div>
+        
+        <div class="icon-wrapper w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-blue-50 border border-blue-100 text-blue-600">
+          <i data-lucide="microscope" class="w-6 h-6"></i>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-700 transition-colors">SINTA Kemdikbudristek</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+          Science and Technology Index. Akses profil jurnal terakreditasi nasional tingkat tinggi.
+        </p>
+        
+        <div class="flex items-center gap-2 text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-1">
+          Kunjungi Platform <i data-lucide="external-link" class="w-4 h-4"></i>
+        </div>
+      </a>
+
+      <a href="https://jurnalwi.lan.go.id/index.php/jurnalkewidyaiswaraan/index" target="_blank" rel="noopener noreferrer" class="card-hover bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden group block">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(13,148,136,.08),transparent 70%); transform:translate(30%,-30%); pointer-events:none;"></div>
+        
+        <div class="icon-wrapper w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-teal-50 border border-teal-100 text-teal-600">
+          <i data-lucide="book-open" class="w-6 h-6"></i>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-teal-700 transition-colors">Jurnal Kewidyaiswaraan (LAN)</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+          Jurnal resmi Lembaga Administrasi Negara untuk publikasi kajian spesifik profesi widyaiswara.
+        </p>
+        
+        <div class="flex items-center gap-2 text-sm font-bold text-teal-600 transition-transform group-hover:translate-x-1">
+          Kunjungi Platform <i data-lucide="external-link" class="w-4 h-4"></i>
+        </div>
+      </a>
+
+      <a href="https://ejournal.iwi.or.id/ojs/index.php/iwi/index" target="_blank" rel="noopener noreferrer" class="card-hover bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden group block">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(249,115,22,.08),transparent 70%); transform:translate(30%,-30%); pointer-events:none;"></div>
+        
+        <div class="icon-wrapper w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-orange-50 border border-orange-100 text-orange-600">
+          <i data-lucide="library-big" class="w-6 h-6"></i>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-orange-600 transition-colors">E-Journal IWI</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+          Jurnal Ikatan Widyaiswara Indonesia. Wadah diseminasi gagasan dan inovasi pembelajaran.
+        </p>
+        
+        <div class="flex items-center gap-2 text-sm font-bold text-orange-600 transition-transform group-hover:translate-x-1">
+          Kunjungi Platform <i data-lucide="external-link" class="w-4 h-4"></i>
+        </div>
+      </a>
+
+      <a href="https://garuda.kemdiktisaintek.go.id/journal/view/19859" target="_blank" rel="noopener noreferrer" class="card-hover bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden group block">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:radial-gradient(circle,rgba(99,102,241,.08),transparent 70%); transform:translate(30%,-30%); pointer-events:none;"></div>
+        
+        <div class="icon-wrapper w-14 h-14 rounded-2xl flex items-center justify-center mb-5 bg-indigo-50 border border-indigo-100 text-indigo-600">
+          <i data-lucide="layers" class="w-6 h-6"></i>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-indigo-600 transition-colors">Garuda Rujukan Digital</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-6">
+          Pintu gerbang penelusuran artikel ilmiah dan jurnal akademik terlengkap di Indonesia.
+        </p>
+        
+        <div class="flex items-center gap-2 text-sm font-bold text-indigo-600 transition-transform group-hover:translate-x-1">
+          Kunjungi Platform <i data-lucide="external-link" class="w-4 h-4"></i>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
