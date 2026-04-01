@@ -3,22 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Tools - Learning Hub BBPK-APDN IV</title>
+  <title>AI Tools - Learning Hub</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f6f7f9; scroll-behavior: smooth; }
-    /* Efek transisi halus untuk tombol */
-    .btn-hover { transition: all 0.3s ease; }
-    .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(249,112,102,0.25); }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f6f7f9; }
+    .bg-grid { background-image: radial-gradient(rgba(249,112,102, 0.1) 1px, transparent 1px); background-size: 30px 30px; }
+    .ai-card { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: white; }
+    .ai-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(249,112,102, 0.1); border-color: rgba(249,112,102, 0.3); }
+    .ai-card:hover .icon-box { transform: scale(1.1) rotate(-5deg); background: #F97066; color: white; }
+    .icon-box { transition: all 0.4s ease; }
+    .btn-action { transition: all 0.3s ease; }
+    .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 15px rgba(249,112,102, 0.25); }
   </style>
 </head>
-<body class="h-full">
+<body class="h-full bg-grid relative overflow-x-hidden">
+
+  <div class="absolute top-0 right-0 -mt-20 -mr-20 w-[600px] h-[600px] bg-red-400 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-400 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 pointer-events-none"></div>
   
   <nav class="w-full bg-white/85 backdrop-blur-md border-b border-gray-200 px-6 py-4 fixed top-0 left-0 z-50 shadow-sm">
-    <div class="max-w-4xl mx-auto flex items-center gap-4">
-      <a href="index.html" class="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-600" aria-label="Kembali ke Beranda">
+    <div class="max-w-6xl mx-auto flex items-center gap-4">
+      <a href="javascript:history.back()" class="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-600" aria-label="Kembali">
         <i data-lucide="arrow-left" class="w-5 h-5"></i>
       </a>
       <div class="flex items-center gap-2">
@@ -28,125 +35,166 @@
     </div>
   </nav>
 
-  <main class="max-w-4xl mx-auto px-6 pt-28 pb-16">
-    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-sm">
-      
-      <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border" style="background:rgba(249,112,102,.05); border-color:rgba(249,112,102,.1);">
-        <i data-lucide="bot" class="w-6 h-6" style="color:#F97066;"></i>
+  <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 relative z-10">
+    
+    <div class="text-center mb-14 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 bg-white border border-red-100 shadow-sm">
+        <i data-lucide="bot" class="w-4 h-4" style="color:#F97066;"></i> 
+        <span class="text-sm font-bold text-gray-700">AI-Driven Teaching Tools</span>
       </div>
-      <h1 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900" style="font-family:'Playfair Display',serif;">Panduan AI-Driven Teaching</h1>
-      <p class="text-gray-500 mb-10 leading-relaxed text-sm md:text-base">
-        Pelajari cara memanfaatkan kecerdasan buatan (AI) terkini untuk mempercepat penyusunan bahan ajar, merancang presentasi yang interaktif, menganalisis referensi diklat, hingga membuat ilustrasi video edukatif yang nyata.
+      <h1 class="text-3xl md:text-5xl font-bold mb-5 text-gray-900 leading-tight" style="font-family:'Playfair Display',serif;">Integrasi AI dalam <span style="color:#F97066;">Pembelajaran</span></h1>
+      <p class="text-gray-500 text-base md:text-lg leading-relaxed">
+        Pelajari cara memanfaatkan kecerdasan buatan (AI) terkini untuk mempercepat penyusunan bahan ajar, merancang presentasi interaktif, hingga membuat visual edukasi.
       </p>
+    </div>
 
-      <div class="flex flex-col gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <div class="p-6 md:p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:border-gray-200 transition-colors">
-          <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-            <div>
-              <h4 class="text-xl font-bold text-gray-900 mb-2">1. Gamma AI: Generator Bahan Tayang</h4>
-              <p class="text-sm text-gray-600 leading-relaxed max-w-2xl">
-                Sangat direkomendasikan bagi Widyaiswara untuk mengubah draf materi mentah menjadi <i>slide</i> presentasi visual yang menarik hanya dalam hitungan menit.
-              </p>
-            </div>
-            <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full w-max h-max uppercase tracking-wider" style="background: rgba(249,112,102,.1); color: #F97066;">
-              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Video
-            </span>
+      <div class="ai-card rounded-3xl p-6 md:p-8 border border-gray-100 flex flex-col h-full relative overflow-hidden group">
+        <div class="flex items-start justify-between mb-5">
+          <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center border text-red-500" style="background:rgba(249,112,102,.05); border-color:rgba(249,112,102,.1);">
+            <i data-lucide="book-marked" class="w-6 h-6"></i>
           </div>
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gray-100 text-gray-600">
+            <i data-lucide="search" class="w-3.5 h-3.5"></i> Research Assistant
+          </span>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-500 transition-colors">Google NotebookLM</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+          Situs ini sangat bermanfaat untuk mengelola literatur yang banyak (seperti Jurnal Kewidyaiswaraan atau peraturan perundang-undangan). Kita bisa mengunggah kumpulan materi tersebut ke NotebookLM, lalu memintanya menyusun draf bahan tayang atau modul pelatihan berdasarkan sumber-sumber resmi yang telah Anda masukkan.
+        </p>
 
-          <div class="relative w-full overflow-hidden rounded-xl mb-6 bg-gray-200 border border-gray-200 shadow-inner" style="padding-top: 56.25%;">
-            <iframe 
-              class="absolute top-0 left-0 w-full h-full" 
-              src="https://www.youtube.com/embed/VIDEO_ID_GAMMA" 
-              title="Panduan Menggunakan Gamma AI" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
-          </div>
-
-          <div class="flex flex-col sm:flex-row items-center gap-4 border-t border-gray-200 pt-6">
-            <a href="https://gamma.app" target="_blank" rel="noopener noreferrer" class="btn-hover w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-semibold" style="background: #F97066;">
-              <i data-lucide="external-link" class="w-4 h-4"></i>
-              Mulai Gamma AI
-            </a>
-            <p class="text-sm text-center sm:text-left text-gray-500">
-              Buat akun gratis menggunakan email Google Anda.
-            </p>
-          </div>
+        <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 bg-gray-900 border border-gray-200">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/k4odVegdNw4" title="Panduan Notebook LM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <div class="p-6 md:p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:border-gray-200 transition-colors">
-          <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-            <div>
-              <h4 class="text-xl font-bold text-gray-900 mb-2">2. Google NotebookLM: Asisten Riset Pintar</h4>
-              <p class="text-sm text-gray-600 leading-relaxed max-w-2xl">
-                Asisten riset virtual yang ideal untuk membantu menyusun skenario pembelajaran, merangkum dokumen kebijakan terbaru, atau mencari <i>insight</i> spesifik dari berbagai jurnal secara bersamaan.
-              </p>
-            </div>
-            <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full w-max h-max uppercase tracking-wider" style="background: rgba(249,112,102,.1); color: #F97066;">
-              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Video
-            </span>
-          </div>
+        <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="btn-action w-full py-3.5 rounded-xl text-white font-semibold flex items-center justify-center gap-2" style="background: #F97066;">
+          Buka NotebookLM <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
 
-          <div class="relative w-full overflow-hidden rounded-xl mb-6 bg-gray-200 border border-gray-200 shadow-inner" style="padding-top: 56.25%;">
-            <iframe 
-              class="absolute top-0 left-0 w-full h-full" 
-              src="https://www.youtube.com/embed/VIDEO_ID_NOTEBOOKLM" 
-              title="Panduan Menggunakan Notebook LM" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
+      <div class="ai-card rounded-3xl p-6 md:p-8 border border-gray-100 flex flex-col h-full relative overflow-hidden group">
+        <div class="flex items-start justify-between mb-5">
+          <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center border text-red-500" style="background:rgba(249,112,102,.05); border-color:rgba(249,112,102,.1);">
+            <i data-lucide="presentation" class="w-6 h-6"></i>
           </div>
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gray-100 text-gray-600">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Slide Generator
+          </span>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-500 transition-colors">Gamma AI</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+          Platform pembuat konten presentasi, dokumen, dan situs web bertenaga AI yang memungkinkan Anda membuat bahan paparan visual secara instan hanya melalui instruksi teks (prompting). Kita cukup memasukkan topik atau mengunggah draf teks, dan Gamma akan secara otomatis menyusun struktur slide, tata letak (layout), hingga memilihkan gambar dan ikon yang relevan.
+        </p>
 
-          <div class="flex flex-col sm:flex-row items-center gap-4 border-t border-gray-200 pt-6">
-            <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="btn-hover w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-semibold" style="background: #F97066;">
-              <i data-lucide="external-link" class="w-4 h-4"></i>
-              Buka NotebookLM
-            </a>
-            <p class="text-sm text-center sm:text-left text-gray-500">
-              Pastikan Anda sudah <i>login</i> menggunakan akun Google untuk mengakses.
-            </p>
-          </div>
+        <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 bg-gray-900 border border-gray-200">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/h4uYBMQfJr4" title="Panduan Gamma AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <div class="p-6 md:p-8 rounded-2xl border border-gray-100 bg-gray-50 hover:border-gray-200 transition-colors">
-          <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
-            <div>
-              <h4 class="text-xl font-bold text-gray-900 mb-2">3. Veo AI: Generator Video Edukasi Sinematik</h4>
-              <p class="text-sm text-gray-600 leading-relaxed max-w-2xl">
-                Model pembuat video canggih dari Google DeepMind. Widyaiswara dapat mengubah teks (<i>prompt</i>) menjadi cuplikan video berkualitas tinggi (1080p) untuk mengilustrasikan simulasi studi kasus atau skenario pelayanan publik tanpa perlu syuting langsung.
-              </p>
-            </div>
-            <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full w-max h-max uppercase tracking-wider" style="background: rgba(249,112,102,.1); color: #F97066;">
-              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Video
-            </span>
-          </div>
+        <a href="https://gamma.app" target="_blank" rel="noopener noreferrer" class="btn-action w-full py-3.5 rounded-xl text-white font-semibold flex items-center justify-center gap-2" style="background: #F97066;">
+          Mulai Gamma AI <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
 
-          <div class="relative w-full overflow-hidden rounded-xl mb-6 bg-gray-200 border border-gray-200 shadow-inner" style="padding-top: 56.25%;">
-            <iframe 
-              class="absolute top-0 left-0 w-full h-full" 
-              src="https://www.youtube.com/embed/VIDEO_ID_VEO" 
-              title="Panduan Menggunakan Veo AI" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen>
-            </iframe>
+      <div class="ai-card rounded-3xl p-6 md:p-8 border border-gray-100 flex flex-col h-full relative overflow-hidden group">
+        <div class="flex items-start justify-between mb-5">
+          <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center border text-red-500" style="background:rgba(249,112,102,.05); border-color:rgba(249,112,102,.1);">
+            <i data-lucide="palette" class="w-6 h-6"></i>
           </div>
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gray-100 text-gray-600">
+            <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i> Graphic Design
+          </span>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-500 transition-colors">Canva (Magic Studio)</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+          Platform desain grafis berbasis cloud yang sangat populer karena kemudahannya. Canva kini dilengkapi dengan teknologi kecerdasan buatan (Magic Media dan Magic Design) yang dapat membantu Anda menyusun draf presentasi secara otomatis hanya dengan memasukkan deskripsi teks atau topik materi.
+        </p>
 
-          <div class="flex flex-col sm:flex-row items-center gap-4 border-t border-gray-200 pt-6">
-            <a href="https://deepmind.google/technologies/veo/" target="_blank" rel="noopener noreferrer" class="btn-hover w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-semibold" style="background: #F97066;">
-              <i data-lucide="external-link" class="w-4 h-4"></i>
-              Pelajari Veo AI
-            </a>
-            <p class="text-sm text-center sm:text-left text-gray-500">
-              Jelajahi kemampuan dan dokumentasi resmi Veo dari Google DeepMind.
-            </p>
-          </div>
+        <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 bg-gray-900 border border-gray-200">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/kWIQZ016oGE" title="Panduan Canva AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-      </div> </div>
+        <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer" class="btn-action w-full py-3.5 rounded-xl text-white font-semibold flex items-center justify-center gap-2" style="background: #F97066;">
+          Buka Canva <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="ai-card rounded-3xl p-6 md:p-8 border border-gray-100 flex flex-col h-full relative overflow-hidden group">
+        <div class="flex items-start justify-between mb-5">
+          <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center border text-red-500" style="background:rgba(249,112,102,.05); border-color:rgba(249,112,102,.1);">
+            <i data-lucide="mic" class="w-6 h-6"></i>
+          </div>
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gray-100 text-gray-600">
+            <i data-lucide="smile" class="w-3.5 h-3.5"></i> Avatar & Audio
+          </span>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-500 transition-colors">Lip Sync AI</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+          Cara membuat gambar berbicara dengan lip sync AI secara otomatis. Mulai dari membuat video lip sync dari sebuah foto diam, mengubah video biasa menjadi sinkron dengan suara, sampai menciptakan video lip sync berdurasi satu menit yang siap dijadikan konten pembelajaran atau media sosial.
+        </p>
+
+        <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 bg-gray-900 border border-gray-200">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/MD__AaahXm0" title="Tutorial Lip Sync AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <a href="https://www.youtube.com/watch?v=MD__AaahXm0" target="_blank" rel="noopener noreferrer" class="btn-action w-full py-3.5 rounded-xl text-white font-semibold flex items-center justify-center gap-2" style="background: #F97066;">
+          Tonton Tutorial <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="ai-card rounded-3xl p-6 md:p-8 border border-gray-100 flex flex-col h-full relative overflow-hidden group">
+        <div class="flex items-start justify-between mb-5">
+          <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center border text-red-500" style="background:rgba(249,112,102,.05); border-color:rgba(249,112,102,.1);">
+            <i data-lucide="cpu" class="w-6 h-6"></i>
+          </div>
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gray-100 text-gray-600">
+            <i data-lucide="code" class="w-3.5 h-3.5"></i> AI Workspace
+          </span>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-500 transition-colors">Google AI Studio</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+          Google punya banyak AI canggih yang bisa dicoba. Mulai dari membuat gambar dengan nuansa Indonesia, pembuat voice over natural, pembuat video VEO 3 dengan suara, dan masih banyak lagi. Di video ini akan dibahas beberapa AI Google tercanggih seperti Google Veo 3, Google Whisk, dan Google Flow.
+        </p>
+
+        <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 bg-gray-900 border border-gray-200">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/0QR5HEy0Kx0" title="Review Google AI Studio" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer" class="btn-action w-full py-3.5 rounded-xl text-white font-semibold flex items-center justify-center gap-2" style="background: #F97066;">
+          Buka AI Studio <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="ai-card rounded-3xl p-6 md:p-8 border border-gray-100 flex flex-col h-full relative overflow-hidden group">
+        <div class="flex items-start justify-between mb-5">
+          <div class="icon-box w-14 h-14 rounded-2xl flex items-center justify-center border text-red-500" style="background:rgba(249,112,102,.05); border-color:rgba(249,112,102,.1);">
+            <i data-lucide="image-play" class="w-6 h-6"></i>
+          </div>
+          <span class="inline-flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider bg-gray-100 text-gray-600">
+            <i data-lucide="image" class="w-3.5 h-3.5"></i> Visual Generator
+          </span>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-500 transition-colors">Dreamina AI</h3>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+          Platform ini sangat unggul untuk membuat media pembelajaran visual. Anda bisa menciptakan ilustrasi khusus atau membuat video singkat berdurasi beberapa detik agar audiens lebih terkesan dan tidak bosan. Hasilkan gambar berkualitas tinggi atau video pendek hanya dengan memasukkan deskripsi teks (prompt) yang artistik dan sinematik.
+        </p>
+
+        <div class="w-full aspect-video rounded-xl overflow-hidden mb-6 bg-gray-900 border border-gray-200">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/jBRIMA07EOI" title="Panduan Dreamina AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <a href="https://dreamina.capcut.com/" target="_blank" rel="noopener noreferrer" class="btn-action w-full py-3.5 rounded-xl text-white font-semibold flex items-center justify-center gap-2" style="background: #F97066;">
+          Mulai Dreamina AI <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
   </main>
 
   <script>
